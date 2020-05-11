@@ -19,15 +19,22 @@ func main() {
 		panic(err)
 	}
 
+	fmt.Println("begin print")
 	version, err := k8s.GetVersion()
 
 	fmt.Printf("kubernetes version: %s\n", version)
 
 	namespaces ,err := k8s.GetAllNamespaces()
 
+	if err != nil {
+		panic(err)
+	}
+
+
 	for _, item := range namespaces {
 		fmt.Println(item)
 	}
+
 }
 
 type K8s struct {
